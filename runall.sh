@@ -21,12 +21,7 @@ mv genbank ncbi
 #concatenate all files into one multifasta file
 find ncbi -name '*fna.gz' | xargs zcat > selected_ncbi_genomes.fasta
 
-#write abundance file
-cat <<EOF > selected_ncbi_genomes_abundance.txt
-NC_015425.1	0.7470360573640644
-NC_012793.1	0.15685651075583193
-NC_013887.1	0.09610743188010362
-EOF
+#abundance file pulled from github repo
 
 # Simulate reads from selected genomes and abundance file
 iss generate --genomes selected_ncbi_genomes.fasta --abundance_file selected_ncbi_genomes_abundance.txt --n_reads 2000000 --model MiSeq --output ncbi_lc --cpus 8
